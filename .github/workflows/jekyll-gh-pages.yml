@@ -42,7 +42,7 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: .
+      url: https://ismailastighfar.github.io/Portfolio/
     runs-on: ubuntu-latest
     needs: build
     steps:
