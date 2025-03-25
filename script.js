@@ -127,3 +127,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
   });
+
+
+  // Optional: Add any additional JavaScript for project interactions
+document.addEventListener('DOMContentLoaded', function() {
+  // If you want to add any specific interactions for projects
+  const projectCards = document.querySelectorAll('.project-card');
+  
+  projectCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+          card.classList.add('hover');
+      });
+      
+      card.addEventListener('mouseleave', () => {
+          card.classList.remove('hover');
+      });
+  });
+});
