@@ -144,3 +144,94 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   });
 });
+
+    
+    // Typewriter effect
+    const typewriterElement = document.getElementById('typewriter-text');
+    const phrases = [
+      'Junior Full Stack Dev',
+      'Microservices & Cloud Learner',
+      'Java Spring Boot & React Enthusiast',
+      'DevOps & CI/CD Explorer',
+    ];
+    
+    let phraseIndex = 0;
+    let letterIndex = 0;
+    let currentPhrase = '';
+    let isDeleting = false;
+    let typewriterSpeed = 100;
+    
+    function typeEffect() {
+        const currentText = phrases[phraseIndex];
+        
+        if (isDeleting) {
+            currentPhrase = currentText.substring(0, letterIndex - 1);
+            letterIndex--;
+            typewriterSpeed = 50;
+        } else {
+            currentPhrase = currentText.substring(0, letterIndex + 1);
+            letterIndex++;
+            typewriterSpeed = 100;
+        }
+        
+        typewriterElement.textContent = currentPhrase;
+        
+        if (!isDeleting && letterIndex === currentText.length) {
+            isDeleting = true;
+            typewriterSpeed = 1000; // Pause at the end
+        } else if (isDeleting && letterIndex === 0) {
+            isDeleting = false;
+            phraseIndex = (phraseIndex + 1) % phrases.length;
+            typewriterSpeed = 500; // Pause before typing next phrase
+        }
+        
+        setTimeout(typeEffect, typewriterSpeed);
+    }
+    
+    typeEffect();
+
+
+        // Project Filtering
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize project filters
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectItems = document.querySelectorAll('.project-item');
+        
+        // Filter projects when clicking on filter buttons
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Show/hide projects based on filter
+                projectItems.forEach(item => {
+                    if (filterValue === 'all' || item.classList.contains(filterValue)) {
+                        item.classList.remove('hide-project');
+                        setTimeout(() => {
+                            item.style.display = 'block';
+                        }, 300);
+                    } else {
+                        item.classList.add('hide-project');
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+    
+        // Enable image hover effects
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.querySelector('.project-hover').style.opacity = '1';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.querySelector('.project-hover').style.opacity = '0';
+            });
+        });
+    });
