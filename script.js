@@ -150,9 +150,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const typewriterElement = document.getElementById('typewriter-text');
     const phrases = [
       'Junior Full Stack Dev',
-      'Microservices & Cloud Learner',
       'Java Spring Boot & React Enthusiast',
       'DevOps & CI/CD Explorer',
+      'Microservices & Cloud Learner',
     ];
     
     let phraseIndex = 0;
